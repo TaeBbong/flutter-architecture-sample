@@ -8,6 +8,8 @@ class SignUpPage extends StatelessWidget {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
+  SignUpPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final authViewModel = Get.find<AuthViewModel>();
@@ -56,7 +58,7 @@ class SignUpPage extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: Obx(() => authViewModel.isLoading.value
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : ElevatedButton(
                       onPressed: () {
                         authViewModel.register(
@@ -74,7 +76,7 @@ class SignUpPage extends StatelessWidget {
             Obx(() => authViewModel.user.value != null
                 ? Text('Welcome, ${authViewModel.user.value!.email}')
                 : Text(authViewModel.errorMessage.value,
-                    style: TextStyle(color: Colors.red))),
+                    style: const TextStyle(color: Colors.red))),
           ],
         ),
       ),

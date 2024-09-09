@@ -1,16 +1,34 @@
-# architecture
+### **1. 클린 아키텍처**
+**구성**: Presentation Layer, Domain Layer, Data Layer로 나눠 모듈화된 구조. Use Case와 리포지토리를 통해 각 계층 간 상호작용을 명확히 구분.
 
-A new Flutter project.
+**장점**:
+- **유연성**: 각 계층이 독립적이어서 특정 부분만 변경 가능.
+- **테스트 용이성**: 각 계층이 독립적이라 테스트가 쉽다.
+- **유지보수성**: 비즈니스 로직과 UI가 완전히 분리되어 유지보수에 유리.
 
-## Getting Started
+**단점**:
+- **복잡성**: 작은 프로젝트에선 과도하게 복잡할 수 있음.
+- **초기 설정**: 각 계층을 명확히 구분하고 의존성 관리를 해야 하므로 초기 설정이 복잡할 수 있음.
 
-This project is a starting point for a Flutter application.
+### **2. MVVM 아키텍처 (GetX 기반)**
+**구성**: Model, View, ViewModel로 구분되며 ViewModel에서 UI 상태와 비즈니스 로직을 처리.
 
-A few resources to get you started if this is your first Flutter project:
+**장점**:
+- **UI와 로직 분리**: ViewModel에서 상태 관리를 하여 UI와 비즈니스 로직이 잘 분리됨.
+- **단순성**: GetX의 의존성 주입과 상태 관리 기능 덕분에 코드를 더 간단하게 작성 가능.
+- **실시간 업데이트**: 상태 변화가 실시간으로 UI에 반영됨.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**단점**:
+- **유연성 부족**: 클린 아키텍처에 비해 엄격한 계층 구분이 없어서 유연성이 떨어질 수 있음.
+- **테스트 어려움**: 비즈니스 로직과 상태 관리가 혼합되면 테스트하기 어려울 수 있음.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### **클린 아키텍처 vs MVVM**
+- **규모**: 클린 아키텍처는 큰 프로젝트에서 유리하고, MVVM은 상대적으로 작은 규모나 중간 정도의 앱에서 더 빠르게 개발할 수 있습니다.
+- **테스트**: 클린 아키텍처는 독립적인 계층 덕분에 더 세밀하게 테스트할 수 있는 반면, MVVM은 테스트 구조가 약간 복잡할 수 있습니다.
+- **초기 설정**: MVVM이 상대적으로 간단하게 설정 가능한 반면, 클린 아키텍처는 프로젝트 구조 설정이 더 복잡합니다.
+
+### **추천**:
+- **작은 앱**: 빠르게 개발해야 하고, 유지보수가 적을 경우 MVVM이 적합합니다.
+- **큰 앱 또는 장기 프로젝트**: 확장성과 유지보수성을 고려해야 한다면 클린 아키텍처가 더 적합합니다.
+
+각 아키텍처는 상황에 따라 적합한 사용 사례가 다르므로 프로젝트의 특성과 규모에 따라 선택하는 것이 중요합니다.
